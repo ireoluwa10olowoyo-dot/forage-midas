@@ -2,14 +2,15 @@ package com.jpmc.midascore.component;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
+import com.jpmc.midascore.Service.TransactionService;
 import com.jpmc.midascore.foundation.Transaction;
 
 
 @Component
 public class TransactionListener{
-
-    public TransactionListener(){
-
+    private TransactionService transactionService;
+    public TransactionListener(TransactionService transactionService){
+        this .transactionService = transactionService;
     }
 
     @KafkaListener(
@@ -17,7 +18,7 @@ public class TransactionListener{
         groupId = "midas-core"
     )
     public void receiveTransaction(Transaction transaction){
-        System.out.println(transaction);
+        transactionService.processTransaction(transaction);
     }
 
 }
