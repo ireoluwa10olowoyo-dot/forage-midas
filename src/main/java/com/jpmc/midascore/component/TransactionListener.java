@@ -8,9 +8,10 @@ import com.jpmc.midascore.foundation.Transaction;
 
 @Component
 public class TransactionListener{
-    private TransactionService transactionService;
+    private final TransactionService transactionService;
+
     public TransactionListener(TransactionService transactionService){
-        this .transactionService = transactionService;
+        this.transactionService = transactionService;
     }
 
     @KafkaListener(

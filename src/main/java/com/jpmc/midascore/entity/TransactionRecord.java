@@ -1,11 +1,13 @@
 package com.jpmc.midascore.entity;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+
 
 
 @Entity
@@ -27,10 +29,20 @@ public class TransactionRecord {
     @Column(nullable =false)
     private float amount;
 
-    public TransactionRecord(UserRecord sender, UserRecord recipient, float amount){
+    @Column(nullable=false)
+    private float incentive;
+
+   
+
+    public TransactionRecord() {
+        
+    }
+
+    public TransactionRecord(UserRecord sender, UserRecord recipient, float amount, float incentive){
         this.sender = sender;
         this.recipient = recipient;
         this.amount = amount;
+        this.incentive = incentive;
     }
 
     public UserRecord getSender() {
@@ -55,6 +67,15 @@ public class TransactionRecord {
 
     public void setAmount(float amount) {
         this.amount = amount;
+    }
+
+
+    public float getIncentive() {
+        return incentive;
+    }
+
+    public void setIncentive(float incentive) {
+        this.incentive = incentive;
     }
 
 

@@ -10,4 +10,6 @@ public class MidasCoreApplication {
         SpringApplication.run(MidasCoreApplication.class, args);
     }
 
+   
+
 }
